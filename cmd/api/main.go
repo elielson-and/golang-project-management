@@ -3,10 +3,10 @@ package main
 import (
 	"net/http"
 
-	_ "github.com/elielson-and/golang-project-management/docs" // Import necessário para o Swag
+	_ "github.com/elielson-and/golang-project-management/docs"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	echoSwagger "github.com/swaggo/echo-swagger" // Importa o Echo Swagger
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 // @title Swagger Example API
@@ -29,10 +29,8 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	// Adiciona o endpoint Swagger
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
-	// Endpoint de teste
 	e.GET("/ping", func(c echo.Context) error {
 		return c.String(http.StatusOK, "pong")
 	})
