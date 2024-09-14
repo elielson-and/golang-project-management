@@ -12,5 +12,16 @@ info:
   termsOfService: http://swagger.io/terms/
   title: Swagger Example API
   version: "1.0"
-paths: {}
+paths:
+  /ping:
+    get:
+      description: This is a simple ping-pong endpoint to test server responsiveness
+      responses:
+        "200":
+          description: pong
+          schema:
+            type: string
+      summary: Ping the server
+      tags:
+      - ping
 swagger: "2.0"

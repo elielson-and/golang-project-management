@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	_ "github.com/elielson-and/golang-project-management/docs"
+	_ "github.com/elielson-and/golang-project-management/docs" // Import necessário para o Swag
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	echoSwagger "github.com/swaggo/echo-swagger"
@@ -23,17 +23,27 @@ import (
 
 // @host localhost:8080
 // @BasePath /
+
+// PingHandler responde com "pong"
+// @Summary Ping the server
+// @Description This is a simple ping-pong endpoint to test server responsiveness
+// @Tags ping
+// @Success 200 {string} string "pong"
+// @Router /ping [get]
+func PingHandler(c echo.Context) error {
+	return c.String(http.StatusOK, "pong")
+}
+
 func main() {
 	e := echo.New()
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	// swagger
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
-	e.GET("/ping", func(c echo.Context) error {
-		return c.String(http.StatusOK, "pong")
-	})
+	e.GET("/ping", PingHandler)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }
