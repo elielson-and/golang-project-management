@@ -34,6 +34,16 @@ func PingHandler(c echo.Context) error {
 	return c.String(http.StatusOK, "pong")
 }
 
+// PingHandler2 responde com "pong"
+// @Summary Ping the server
+// @Description This is a simple ping-pong endpoint to test server responsiveness
+// @Tags ping
+// @Success 200 {string} string "pong"
+// @Router /ping [get]
+func PingHandler2(c echo.Context) error {
+	return c.String(http.StatusOK, "pong2")
+}
+
 func main() {
 	e := echo.New()
 
@@ -44,6 +54,7 @@ func main() {
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	e.GET("/ping", PingHandler)
+	e.GET("/ping2", PingHandler2)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

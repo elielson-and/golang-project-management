@@ -1,16 +1,17 @@
-FROM golang:1.20-alpine
+
+FROM golang:1.21-alpine
+
+RUN apk add --no-cache git curl
+
+# Compiledaemon p hot reload
+RUN go install github.com/githubnemo/CompileDaemon@latest
 
 WORKDIR /app
 
 COPY go.mod ./
 COPY go.sum ./
-
 RUN go mod download
 
 COPY . .
 
-RUN go build -o main ./cmd/api/main.go
-
-EXPOSE 8080
-
-CMD ["/app/main"]
+CMD ["CompileDaemon", "--build=go build -o main ./cmd/api/main.go", "--command=./main"]
