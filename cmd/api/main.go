@@ -1,8 +1,9 @@
+// cmd/api/main.go
 package main
 
 import (
-	_ "github.com/elielson-and/golang-project-management/docs"            // Import necessário para o Swag
-	"github.com/elielson-and/golang-project-management/internal/handlers" // Importe o pacote handlers
+	_ "github.com/elielson-and/golang-project-management/docs" // Import necessário para o Swag
+	"github.com/elielson-and/golang-project-management/internal/routes"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	echoSwagger "github.com/swaggo/echo-swagger"
@@ -22,7 +23,6 @@ import (
 
 // @host localhost:8080
 // @BasePath /
-
 func main() {
 	e := echo.New()
 
@@ -32,9 +32,7 @@ func main() {
 	// Swagger
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
-	// Rotas usando handlers importados
-	e.GET("/ping", handlers.PingHandler)
-	e.GET("/ping2", handlers.PingHandler2)
+	routes.InitRoutes(e)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }
