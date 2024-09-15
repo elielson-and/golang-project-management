@@ -1,0 +1,4 @@
+# Arquivos gerados pelo swag
+docs/docs.go
+docs/swagger.json
+docs/swagger.yaml

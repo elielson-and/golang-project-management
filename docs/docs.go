@@ -47,10 +47,10 @@ const docTemplate = `{
                 "tags": [
                     "ping"
                 ],
-                "summary": "Ping the server",
+                "summary": "Ping the server2",
                 "responses": {
                     "200": {
-                        "description": "pong",
+                        "description": "pong2",
                         "schema": {
                             "type": "string"
                         }

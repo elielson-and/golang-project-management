@@ -12,6 +12,9 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
+#RUN swag init -g cmd/api/main.go
+
+
 COPY . .
 
 CMD ["CompileDaemon", "--build=go build -o main ./cmd/api/main.go", "--command=./main"]

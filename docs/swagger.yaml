@@ -29,10 +29,10 @@ paths:
       description: This is a simple ping-pong endpoint to test server responsiveness
       responses:
         "200":
-          description: pong
+          description: pong2
           schema:
             type: string
-      summary: Ping the server
+      summary: Ping the server2
       tags:
       - ping
 swagger: "2.0"
