@@ -40,6 +40,23 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/ping2": {
+            "get": {
+                "description": "This is a simple ping-pong endpoint to test server responsiveness",
+                "tags": [
+                    "ping"
+                ],
+                "summary": "Ping the server",
+                "responses": {
+                    "200": {
+                        "description": "pong",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     }
 }`
